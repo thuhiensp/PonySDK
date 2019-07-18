@@ -22,13 +22,19 @@ http://www.springframework.org/schema/task http://www.springframework.org/schema
         <property name="entryPointClass" value="com.ponysdk.sample.client.UISampleEntryPoint" />
         <property name="javascript">
             <list>
-                <value>script/jquery-3.0.0.min.js</value>
-                <value>script/sample.js</value>
+               <value>script/jquery-3.0.0.min.js</value>
+<!--                 <value>script/sample.js</value> -->
+<!--                  <value>script/arrayOfAllAttributes.js</value> -->
+<!--                  <value>script/arrayOfCreateLeafTypeNoArgs.js</value> -->
+<!--                  <value>script/arrayOfCreateLeafTypeWithArgs.js</value> -->
+<!--                  <value>script/arrayOfEventAttributesJs.js</value> -->
+                  <value>script/client_pony.js</value>
             </list>
         </property>
         <property name="style">
             <map>
-                <entry key="ponysdk" value="css/ponysdk.css" />
+<!--                 <entry key="ponysdk" value="css/style.css" /> -->
+                 <entry key="ponysdk" value="css/ponysdk.css" /> 
                 <entry key="sample" value="sample" />
             </map>
         </property>

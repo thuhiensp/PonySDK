@@ -1,0 +1,49 @@
+/*
+ * Copyright 2019 SmartTrade Technologies
+ *     Pony SDK
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+package com.ponysdk.core.ui2.svg;
+import com.ponysdk.core.ui2.PLeafTypeNoArgs;
+
+public class PSVGLinearGradientElement extends PSVGGradientElement {
+     private PSVGAnimatedLength x1;
+     private PSVGAnimatedLength y1;
+     private PSVGAnimatedLength x2;
+     private PSVGAnimatedLength y2;
+
+    public PSVGLinearGradientElement() {
+      applyInit(widgetNoArgs());
+    }
+
+
+    public PSVGAnimatedLength getX1(){
+      return x1;
+    }
+    public PSVGAnimatedLength getY1(){
+      return y1;
+    }
+    public PSVGAnimatedLength getX2(){
+      return x2;
+    }
+    public PSVGAnimatedLength getY2(){
+      return y2;
+    }
+
+    private PLeafTypeNoArgs widgetNoArgs() {
+      return PLeafTypeNoArgs.SVG_LINEAR_GRADIENT_ELEMENT;
+    }
+
+
+}

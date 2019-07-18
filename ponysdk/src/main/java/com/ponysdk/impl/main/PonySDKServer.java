@@ -25,6 +25,9 @@ package com.ponysdk.impl.main;
 
 import java.net.InetAddress;
 import java.net.URL;
+import java.util.EnumSet;
+
+import javax.servlet.DispatcherType;
 
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.HttpConfiguration;
@@ -32,8 +35,10 @@ import org.eclipse.jetty.server.HttpConnectionFactory;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.server.handler.gzip.GzipHandler;
+import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import org.eclipse.jetty.servlets.CrossOriginFilter;
 import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -151,6 +156,9 @@ public class PonySDKServer {
 
         final ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/" + configuration.getApplicationContextName());
+        final FilterHolder crossOrigin = new FilterHolder(new CrossOriginFilter());
+        crossOrigin.setInitParameter("allowedOrigins", MAPPING_BOOTSTRAP);
+        context.addFilter(crossOrigin, MAPPING_BOOTSTRAP, EnumSet.allOf(DispatcherType.class));
 
         context.addServlet(new ServletHolder(createBootstrapServlet()), MAPPING_BOOTSTRAP);
         context.addServlet(new ServletHolder(createStreamServiceServlet()), MAPPING_STREAM);

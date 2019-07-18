@@ -65,6 +65,7 @@ import com.ponysdk.core.ui.eventbus.EventSource;
 import com.ponysdk.core.ui.eventbus.HandlerRegistration;
 import com.ponysdk.core.ui.eventbus.StreamHandler;
 import com.ponysdk.core.ui.statistic.TerminalDataReceiver;
+import com.ponysdk.core.ui2.PObject2;
 import com.ponysdk.core.useragent.UserAgent;
 import com.ponysdk.core.writer.ModelWriter;
 
@@ -93,6 +94,8 @@ public class UIContext {
     private final Map<String, Object> attributes = new HashMap<>();
 
     private final PObjectCache pObjectCache = new PObjectCache();
+    private final Map<Integer, PObject2> listAllObject = new HashMap<>(); //stage Hien Le.
+    //private final PHtmlObjectCache pHtmlObjectCache = new PHtmlObjectCache(); //project of stage: for PHtmlObject.
     private int objectCounter = 1;
 
     private Map<Integer, StreamHandler> streamListenerByID;
@@ -391,8 +394,10 @@ public class UIContext {
             if (objectID == 0) {
                 cookies.onClientData(jsonObject);
             } else {
-                final PObject object = getObject(objectID);
-
+                //final PObject object = getObject(objectID);// Attention!!! Pony origin.
+                final PObject2 object = listAllObject.get(objectID); //stage Hien Le.
+                log.info("objectid:  " + objectID);
+                log.info("understand object?" + object);
                 if (object == null) {
                     log.error("unknown reference from the browser. Unable to execute instruction: {}", jsonObject);
 
@@ -406,8 +411,7 @@ public class UIContext {
                     return;
                 }
 
-                if (terminalDataReceiver != null) terminalDataReceiver.onDataReceived(object, jsonObject);
-
+                //if (terminalDataReceiver != null) terminalDataReceiver.onDataReceived(object, jsonObject);// Attention!!! Pony origin.
                 object.onClientData(jsonObject);
             }
         }
@@ -455,6 +459,11 @@ public class UIContext {
      */
     public void registerObject(final PObject pObject) {
         pObjectCache.add(pObject);
+    }
+
+    //stage Hien Le.
+    public void registerObject2(final PObject2 pObject, final int objectID) {
+        listAllObject.put(objectID, pObject);
     }
 
     /**
@@ -873,4 +882,11 @@ public class UIContext {
         }
     }
 
+    /**
+     * @param pHtmlObject
+     */
+
+    public Map<Integer, PObject2> getListAllObject() {
+        return listAllObject;
+    }
 }

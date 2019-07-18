@@ -230,12 +230,12 @@ public class BootstrapServlet extends HttpServlet {
     protected String addScript(final HttpServletRequest request) {
         final StringBuilder sb = new StringBuilder();
 
-        String ponyTerminalJsFileName;
-        if (configuration.isDebugMode()) ponyTerminalJsFileName = "ponyterminaldebug/ponyterminaldebug.nocache.js";
-        else ponyTerminalJsFileName = "ponyterminal/ponyterminal.nocache.js";
+        //        String ponyTerminalJsFileName; //temporaine, stage Hien Le
+        //        if (configuration.isDebugMode()) ponyTerminalJsFileName = "ponyterminaldebug/ponyterminaldebug.nocache.js";
+        //        else ponyTerminalJsFileName = "ponyterminal/ponyterminal.nocache.js";
 
-        sb.append(String.format(SCRIPT_PATTERN, rootPath + ponyTerminalJsFileName)).append(NEW_LINE);
-        sb.append(String.format(SCRIPT_PATTERN, rootPath + "script/ponysdk.js")).append(NEW_LINE);
+        //        sb.append(String.format(SCRIPT_PATTERN, rootPath + ponyTerminalJsFileName)).append(NEW_LINE);
+        //        sb.append(String.format(SCRIPT_PATTERN, rootPath + "script/ponysdk.js")).append(NEW_LINE);
 
         final Set<String> scripts = configuration.getJavascript();
         if (scripts != null && !scripts.isEmpty()) {

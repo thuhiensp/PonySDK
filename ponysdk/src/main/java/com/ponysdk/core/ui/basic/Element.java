@@ -570,4 +570,12 @@ public class Element {
         return newPElement(E_STYLE);
     }
 
+    public static final PInput newPInput() {
+        return f.newPInput();
+    }
+
+    public static final PInput newPInput(final String text) {
+        return f.newPInput(text);
+    }
+
 }

@@ -23,14 +23,15 @@
 
 package com.ponysdk.core.ui.eventbus;
 
-import com.ponysdk.core.util.SetUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.ponysdk.core.util.SetUtils;
 
 public class EventBus {
 
@@ -70,9 +71,9 @@ public class EventBus {
         Collection<Throwable> causes = null;
         final Event.Type eventType = event.getAssociatedType();
 
-        final Collection<EventHandler> specificHandlers = getIterableHandlers(source, eventType);
-        final Collection<EventHandler> globalHandlers = getIterableHandlers(globalEventSource, eventType);
-        final Collection<BroadcastEventHandler> broadcastHandlers = broadcastHandlerManager == null ? null
+        final Collection<EventHandler> specificHandlers = getIterableHandlers(source, eventType);// handlers request by client.
+        final Collection<EventHandler> globalHandlers = getIterableHandlers(globalEventSource, eventType); //handlers for AbstractActivity (ex FooterActivity, HeaderActivity, LoginActivity...)
+        final Collection<BroadcastEventHandler> broadcastHandlers = broadcastHandlerManager == null ? null //handlers for NotificationActivity.
                 : new ArrayList<>(broadcastHandlerManager);
 
         for (final EventHandler handler : specificHandlers) {

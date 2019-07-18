@@ -1,0 +1,73 @@
+/*
+ * Copyright 2019 SmartTrade Technologies
+ *     Pony SDK
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+package com.ponysdk.core.ui2.core;
+import com.ponysdk.core.ui2.PObject2;
+import com.ponysdk.core.ui2.PLeafTypeNoArgs;
+import com.ponysdk.core.ui2.PLeafTypeWithArgs;
+
+public class PDate extends PObject2 {
+
+    public PDate() {
+      applyInit(widgetNoArgs());
+    }
+
+
+    public PDate(Double value){
+      applyInit(widgetWithArgs(), new Object[]{value});
+    }
+
+    public PDate(String dateString){
+      applyInit(widgetWithArgs(), new Object[]{dateString});
+    }
+
+    public PDate(Integer year, Integer month){
+      applyInit(widgetWithArgs(), new Object[]{year, month});
+    }
+
+    public PDate(Integer year, Integer month, Integer date){
+      applyInit(widgetWithArgs(), new Object[]{year, month, date});
+    }
+
+    public PDate(Integer year, Integer month, Integer date, Integer hours){
+      applyInit(widgetWithArgs(), new Object[]{year, month, date, hours});
+    }
+
+    public PDate(Integer year, Integer month, Integer date, Integer hours, Integer minutes){
+      applyInit(widgetWithArgs(), new Object[]{year, month, date, hours, minutes});
+    }
+
+    public PDate(Integer year, Integer month, Integer date, Integer hours, Integer minutes, Integer seconds){
+      applyInit(widgetWithArgs(), new Object[]{year, month, date, hours, minutes, seconds});
+    }
+
+    public PDate(Integer year, Integer month, Integer date, Integer hours, Integer minutes, Integer seconds, Integer milliseconds){
+      applyInit(widgetWithArgs(), new Object[]{year, month, date, hours, minutes, seconds, milliseconds});
+    }
+
+
+
+
+    private PLeafTypeNoArgs widgetNoArgs() {
+      return PLeafTypeNoArgs.DATE;
+    }
+
+    private PLeafTypeWithArgs widgetWithArgs() {
+      return PLeafTypeWithArgs.DATE;
+    }
+
+
+}

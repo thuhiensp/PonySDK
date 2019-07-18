@@ -261,6 +261,7 @@ public class WebSocket implements WebSocketListener, WebsocketEncoder {
     @Override
     public void endObject() {
         encode(ServerToClientModel.END, null);
+        flush();
     }
 
     @Override

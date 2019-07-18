@@ -78,6 +78,11 @@ public class WebSocketPusher extends AutoFlushedBuffer implements WriteCallback 
     @Override
     protected void doFlush(final ByteBuffer bufferToFlush) {
         final int bytes = bufferToFlush.remaining();
+        final StringBuilder sb = new StringBuilder();
+        for (int i = bufferToFlush.position(); i < bufferToFlush.limit(); i++) {
+            sb.append(bufferToFlush.get(i) & 0xFF).append(", ");
+        }
+        log.info("Send binary message to clientxxxxxxxxxxx : {}", sb.toString());
         session.getRemote().sendBytes(bufferToFlush, this);
         if (listener != null) listener.onOutgoingPonyFramesBytes(bytes);
     }

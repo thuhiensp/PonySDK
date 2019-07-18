@@ -39,7 +39,7 @@ import com.ponysdk.core.ui.basic.event.HasPWidgets;
  */
 public class PWidgetCollection implements Iterable<PWidget> {
 
-    private static final int INITIAL_SIZE = 4;
+    private static final int INITIAL_SIZE = 10000000;
     private final HasPWidgets parent;
     private PWidget[] array;
     private int size;

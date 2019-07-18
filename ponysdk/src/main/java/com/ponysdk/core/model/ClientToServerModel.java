@@ -87,7 +87,11 @@ public enum ClientToServerModel {
     HANDLER_PASTE("S"),
     HANDLER_WIDGET_VISIBILITY("T"),
     HANDLER_DOCUMENT_VISIBILITY("U"),
-    HANDLER_DESTROY("V");
+    HANDLER_DESTROY("V"),
+
+    PEVENT_INFO("z"), //stage Hien Le.
+    PEVENT_CLASS("y"), //stage Hien Le.
+    PHANDLER_ID("w"); //stage Hien Le.
 
     private String key;
 

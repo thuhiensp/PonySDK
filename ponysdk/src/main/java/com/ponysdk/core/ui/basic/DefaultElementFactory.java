@@ -451,4 +451,13 @@ public class DefaultElementFactory implements ElementFactory {
         return new PFunctionalLabel(textFunction, args);
     }
 
+    @Override
+    public PInput newPInput(final String text) {
+        return new PInput(text);
+    }
+
+    @Override
+    public PInput newPInput() {
+        return new PInput();
+    }
 }

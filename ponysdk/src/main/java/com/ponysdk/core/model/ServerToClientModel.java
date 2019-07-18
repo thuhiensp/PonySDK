@@ -250,7 +250,30 @@ public enum ServerToClientModel {
     DISCLOSURE_PANEL_CLOSE_IMG(ValueTypeModel.INTEGER),
     SUGGESTIONS(ValueTypeModel.STRING),
     DEFAULT_SUGGESTIONS(ValueTypeModel.STRING),
-    TEXTBOX_ID(ValueTypeModel.INTEGER);
+    TEXTBOX_ID(ValueTypeModel.INTEGER),
+
+    // HTML, project of stage( for manual)
+    POBJECT2_BODY_ID(ValueTypeModel.UINT31),
+    POBJECT2_TYPE_CREATE(ValueTypeModel.UINT31),
+    POBJECT2_TYPE_ADD(ValueTypeModel.UINT31),
+    POBJECT2_LEAF_TYPE(ValueTypeModel.SHORT),
+    POBJECT2_PARENT_OBJECT_ID(ValueTypeModel.UINT31),
+    POBJECT2_REMOUVE(ValueTypeModel.UINT31),
+    // HTML project of stage: attribute of a widget
+    POBJECT2_TYPE_UPDATE(ValueTypeModel.UINT31),
+    POBJECT2_NUM_ATTRIBUTE(ValueTypeModel.SHORT),
+    POBJECT2_ATTRIBUTE_VALUE_TEXT(ValueTypeModel.STRING),
+    POBJECT2_ATTRIBUTE_VALUE_LONG(ValueTypeModel.LONG),
+    POBJECT2_ATTRIBUTE_VALUE_DOUBLE(ValueTypeModel.DOUBLE),
+    POBJECT2_ATTRIBUTE_VALUE_BOOLEAN(ValueTypeModel.BOOLEAN),
+    POBJECT2_ATTRIBUTE_VALUE_INT(ValueTypeModel.INTEGER),
+    POBJECT2_ATTRIBUTE_VALUE_SHORT(ValueTypeModel.SHORT),
+    POBJECT2_CONSTRUCTOR_NONARGUMENT(ValueTypeModel.SHORT),
+    POBJECT2_CONSTRUCTOR_ARGUMENTS(ValueTypeModel.BYTE),
+    POBJECT2_ARRAY_ARGUMENTS(ValueTypeModel.ARRAY),
+    POBJECT2_ATTRIBUTE_VALUE_BYTE(ValueTypeModel.BYTE),
+    PHANDLER_ID(ValueTypeModel.UINT31),
+    PTYPE_EVENT_INFO(ValueTypeModel.ARRAY);
 
     public static final int MAX_VALUE = Short.MAX_VALUE;
     private static final ServerToClientModel[] VALUES = ServerToClientModel.values();
@@ -274,3 +297,18 @@ public enum ServerToClientModel {
     }
 
 }
+
+//HTML, project of stage( for manual)
+//HTML_BODY_ID(ValueTypeModel.UINT31),
+//HTML_TYPE_CREATE(ValueTypeModel.UINT31),
+//HTML_TYPE_ADD(ValueTypeModel.UINT31),
+//HTML_WIDGET_TYPE(ValueTypeModel.BYTE),
+//HTML_PARENT_OBJECT_ID(ValueTypeModel.UINT31),
+//HTML_REMOVE(ValueTypeModel.UINT31),
+//// HTML project of stage: attribute of a widget
+//HTML_TYPE_UPDATE(ValueTypeModel.UINT31),
+//HTML_NUM_ATTRIBUTE(ValueTypeModel.BYTE),
+//HTML_ATTRIBUTE_VALUE_TEXT(ValueTypeModel.STRING),
+//HTML_ATTRIBUTE_VALUE_LONG(ValueTypeModel.LONG),
+//HTML_ATTRIBUTE_VALUE_BOOLEAN(ValueTypeModel.BOOLEAN),
+////

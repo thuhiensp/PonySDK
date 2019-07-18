@@ -198,4 +198,7 @@ public interface ElementFactory {
 
     PFunctionalLabel newPFunctionalLabel(final TextFunction textFunction, final Object... args);
 
+    PInput newPInput();
+
+    PInput newPInput(final String text);
 }
