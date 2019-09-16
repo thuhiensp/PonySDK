@@ -50,6 +50,7 @@ import com.ponysdk.core.model.ClientToServerModel;
 import com.ponysdk.core.model.HandlerModel;
 import com.ponysdk.core.model.ServerToClientModel;
 import com.ponysdk.core.server.AlreadyDestroyedApplication;
+import com.ponysdk.core.server.context.PObject2Cache;
 import com.ponysdk.core.server.context.PObjectCache;
 import com.ponysdk.core.server.stm.Txn;
 import com.ponysdk.core.server.stm.TxnContext;
@@ -94,7 +95,9 @@ public class UIContext {
     private final Map<String, Object> attributes = new HashMap<>();
 
     private final PObjectCache pObjectCache = new PObjectCache();
-    private final Map<Integer, PObject2> listAllObject = new HashMap<>(); //stage Hien Le.
+    //private final Map<Integer, PObject2> listAllObject = new HashMap<>(); //stage Hien Le.
+
+    private final PObject2Cache pObjectCache2 = new PObject2Cache(); //stage Hien Le.
     //private final PHtmlObjectCache pHtmlObjectCache = new PHtmlObjectCache(); //project of stage: for PHtmlObject.
     private int objectCounter = 1;
 
@@ -373,6 +376,8 @@ public class UIContext {
      * Called from terminal side
      *
      * @param jsonObject the JSON instructions
+     * @throws SecurityException
+     * @throws NoSuchMethodException
      */
     public void fireClientData(final JsonObject jsonObject) {
         if (jsonObject.containsKey(ClientToServerModel.TYPE_HISTORY.toStringValue())) {
@@ -394,13 +399,12 @@ public class UIContext {
             if (objectID == 0) {
                 cookies.onClientData(jsonObject);
             } else {
-                //final PObject object = getObject(objectID);// Attention!!! Pony origin.
-                final PObject2 object = listAllObject.get(objectID); //stage Hien Le.
-                log.info("objectid:  " + objectID);
-                log.info("understand object?" + object);
+                // final PObject object = getObject(objectID);// Attention!!! Pony origin.
+                //final PObject2 object = listAllObject.get(objectID); //stage Hien Le. Version HashMap
+                final PObject2 object = getPObject2(objectID); //state Hien Le. Version PObjectCache2.
+                log.info("hieu body" + object);
                 if (object == null) {
                     log.error("unknown reference from the browser. Unable to execute instruction: {}", jsonObject);
-
                     if (jsonObject.containsKey(ClientToServerModel.PARENT_OBJECT_ID.toStringValue())) {
                         final int parentObjectID = jsonObject.getJsonNumber(ClientToServerModel.PARENT_OBJECT_ID.toStringValue())
                             .intValue();
@@ -412,6 +416,7 @@ public class UIContext {
                 }
 
                 //if (terminalDataReceiver != null) terminalDataReceiver.onDataReceived(object, jsonObject);// Attention!!! Pony origin.
+                // if (object instanceof PWindow2) ((PWindow2) object).onClientData(jsonObject) ;
                 object.onClientData(jsonObject);
             }
         }
@@ -462,8 +467,13 @@ public class UIContext {
     }
 
     //stage Hien Le.
-    public void registerObject2(final PObject2 pObject, final int objectID) {
-        listAllObject.put(objectID, pObject);
+    //    public void registerObject2(final PObject2 pObject, final int objectID) {
+    //        listAllObject.put(objectID, pObject);
+    //    }
+
+    //stage Hien Le.
+    public void registerObject2Cache(final PObject2 pObject) {
+        pObjectCache2.add(pObject);
     }
 
     /**
@@ -475,6 +485,10 @@ public class UIContext {
      */
     public PObject getObject(final int objectID) {
         return pObjectCache.get(objectID);
+    }
+
+    public PObject2 getPObject2(final int objectID) {
+        return pObjectCache2.get(objectID);
     }
 
     /**
@@ -885,8 +899,8 @@ public class UIContext {
     /**
      * @param pHtmlObject
      */
-
-    public Map<Integer, PObject2> getListAllObject() {
-        return listAllObject;
-    }
+    //stage Hien Le,but is not good, don't show the map public!!!
+    //    public Map<Integer, PObject2> getListAllObject() {
+    //        return listAllObject;
+    //    }
 }

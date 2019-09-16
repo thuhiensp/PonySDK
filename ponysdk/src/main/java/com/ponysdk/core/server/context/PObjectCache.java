@@ -65,7 +65,6 @@ public class PObjectCache {
         while ((reference = (PObjectWeakReference) queue.poll()) != null) {
             final int objectID = reference.getObjectID();
             referenceByObjectID.remove(objectID);
-
             final int windowID = reference.getWindowID();
             final int frameID = reference.getFrameID();
             if (log.isDebugEnabled()) log.debug("Removing reference on object #{} in window #{}", objectID, windowID);

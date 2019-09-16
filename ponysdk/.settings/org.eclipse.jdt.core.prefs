@@ -1,5 +1,5 @@
 #
-#Thu Nov 22 09:56:45 CET 2018
+#Wed Jul 17 13:17:50 CEST 2019
 org.eclipse.jdt.core.formatter.insert_space_after_ellipsis=insert
 org.eclipse.jdt.core.formatter.insert_space_after_comma_in_enum_declarations=insert
 org.eclipse.jdt.core.formatter.insert_new_line_in_empty_annotation_declaration=insert
@@ -247,6 +247,7 @@ org.eclipse.jdt.core.formatter.alignment_for_enum_constants=49
 org.eclipse.jdt.core.formatter.blank_lines_before_imports=1
 org.eclipse.jdt.core.formatter.insert_space_after_binary_operator=insert
 org.eclipse.jdt.core.formatter.parentheses_positions_in_if_while_statement=common_lines
+org.eclipse.jdt.core.compiler.release=disabled
 org.eclipse.jdt.core.formatter.insert_space_after_closing_brace_in_block=insert
 org.eclipse.jdt.core.formatter.insert_space_before_parenthesized_expression_in_return=insert
 org.eclipse.jdt.core.compiler.annotation.nonnull.secondary=

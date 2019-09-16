@@ -326,6 +326,7 @@ public class WebSocketPusher extends AutoFlushedBuffer implements WriteCallback 
         } else {
             return putArrayStringElement(o.toString());
         }
+        //TODO is array
     }
 
     private int putArrayStringElement(final Object o) throws IOException {

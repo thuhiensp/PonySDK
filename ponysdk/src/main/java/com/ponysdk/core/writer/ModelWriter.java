@@ -28,6 +28,7 @@ import java.lang.ref.WeakReference;
 import com.ponysdk.core.model.ServerToClientModel;
 import com.ponysdk.core.server.websocket.WebsocketEncoder;
 import com.ponysdk.core.ui.basic.PWindow;
+import com.ponysdk.core.ui2.PWindow2;
 //import com.ponysdk.core.ui.html.PHtmlBody;
 
 public class ModelWriter {
@@ -35,6 +36,7 @@ public class ModelWriter {
     private final WebsocketEncoder encoder;
 
     private WeakReference<PWindow> currentWindow;
+    private WeakReference<PWindow2> currentWindow2;
 
     //   private WeakReference<PHtmlBody> currentBody; //for project of stage, for class PHtmlObject.
 
@@ -47,6 +49,16 @@ public class ModelWriter {
 
         if (currentWindow == null || !window.equals(currentWindow.get())) {
             currentWindow = new WeakReference<>(window);
+            encoder.encode(ServerToClientModel.WINDOW_ID, window.getID());
+        }
+    }
+
+    //stage Hien Le.
+    public void beginPObject2(final PWindow2 window) {
+        encoder.beginObject();
+
+        if (currentWindow2 == null || !window.equals(currentWindow2.get())) {
+            currentWindow2 = new WeakReference<>(window);
             encoder.encode(ServerToClientModel.WINDOW_ID, window.getID());
         }
     }

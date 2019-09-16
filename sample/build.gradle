@@ -65,6 +65,10 @@ task runSampleSpring(type: JavaExec) {
   classpath += files(buildDir.getAbsolutePath() + '/gwt/prod/gwt')
   classpath += files(buildDir.getAbsolutePath() + '/resources')
   classpath += files(buildDir.getAbsolutePath() + '/resources/main')
+ // println 'AAAA' 
+ // classpath.collect {
+ //  println it
+ // }
   main = 'com.ponysdk.impl.spring.MainSpring'
   jvmArgs = ['-server', '-Xmx512m', '-Dlog4j.configurationFile=etc/log4j2.xml', '-agentlib:jdwp=transport=dt_socket,server=y,address=8888,suspend=n']
 }

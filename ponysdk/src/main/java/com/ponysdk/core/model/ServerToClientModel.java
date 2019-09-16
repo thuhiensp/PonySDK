@@ -273,7 +273,16 @@ public enum ServerToClientModel {
     POBJECT2_ARRAY_ARGUMENTS(ValueTypeModel.ARRAY),
     POBJECT2_ATTRIBUTE_VALUE_BYTE(ValueTypeModel.BYTE),
     PHANDLER_ID(ValueTypeModel.UINT31),
-    PTYPE_EVENT_INFO(ValueTypeModel.ARRAY);
+    PTYPE_EVENT_INFO(ValueTypeModel.ARRAY),
+    POBJECT2_TYPE_EXISTING(ValueTypeModel.UINT31),
+    POBJECT2_WINDOW_ATTACHE(ValueTypeModel.UINT31),
+    POBJECT2_WINDOW_CLOSE(ValueTypeModel.UINT31),
+    POBJECT2_ID_OBJECT(ValueTypeModel.UINT31),
+    POBJECT2_METHOD_VOID(ValueTypeModel.UINT31),
+    POBJECT2_NUM_METHOD(ValueTypeModel.SHORT),
+    POBJECT2_METHOD(ValueTypeModel.UINT31),
+    POBJECT2_METHOD_CALLBACK(ValueTypeModel.UINT31),
+    POBJECT2_TYPE_REMOVE_CHILD(ValueTypeModel.UINT31);
 
     public static final int MAX_VALUE = Short.MAX_VALUE;
     private static final ServerToClientModel[] VALUES = ServerToClientModel.values();

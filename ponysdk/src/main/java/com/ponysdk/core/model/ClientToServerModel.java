@@ -91,7 +91,9 @@ public enum ClientToServerModel {
 
     PEVENT_INFO("z"), //stage Hien Le.
     PEVENT_CLASS("y"), //stage Hien Le.
-    PHANDLER_ID("w"); //stage Hien Le.
+    PHANDLER_ID("w"), //stage Hien Le.
+    PMETHOD_CALLBACK_ID("W"),
+    PMETHOD_ID("Z");
 
     private String key;
 

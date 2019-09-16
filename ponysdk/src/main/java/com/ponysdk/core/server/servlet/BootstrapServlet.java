@@ -60,6 +60,7 @@ public class BootstrapServlet extends HttpServlet {
     protected String rootPath = "";
 
     private ClassLoader childClassLoader;
+    int count = 0;
 
     public BootstrapServlet() {
     }
@@ -75,6 +76,7 @@ public class BootstrapServlet extends HttpServlet {
         } catch (final IOException e) {
             log.error("Cannot stream request", e);
         }
+
     }
 
     @Override
@@ -105,6 +107,8 @@ public class BootstrapServlet extends HttpServlet {
 
     protected String getPath(final HttpServletRequest request) {
         final String contextPath = request.getContextPath();
+        log.info("path" + contextPath);
+        log.info("uri:" + request.getRequestURI());
         return request.getRequestURI().replaceFirst(contextPath, "");
     }
 
@@ -165,7 +169,7 @@ public class BootstrapServlet extends HttpServlet {
         final StringBuilder sb = new StringBuilder();
 
         sb.append("<!doctype html>").append(NEW_LINE);
-        sb.append("<html>").append(NEW_LINE);
+        sb.append("<html id = \"myHTML\">").append(NEW_LINE);
         sb.append("<head>").append(NEW_LINE);
         sb.append(addHeader(request));
         sb.append("</head>").append(NEW_LINE);
