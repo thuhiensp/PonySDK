@@ -1,0 +1,6 @@
+name: ponysdk
+title: PonySDK demo
+version: 2.1
+start_page: ROOT:index.adoc
+nav:
+- modules/ROOT/nav.adoc
