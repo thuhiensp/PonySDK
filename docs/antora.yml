@@ -1,6 +1,6 @@
 name: ponysdk
-title: PonySDK
-version: 2.1
+title: PonySDK v3
+version: 3.1
 start_page: ROOT:index.adoc
 nav:
 - modules/ROOT/nav.adoc
