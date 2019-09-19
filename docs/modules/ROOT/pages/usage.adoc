@@ -2,10 +2,32 @@
 
 We explain quickly how to use this version of PonySDK. + 
 
-To create some graphical widgets, likes as <div> and <label>: + 
+Using PonySDK v3 to creat some widgets, likes as <div> and <button>:
 
-image::usage1.PNG[]
-image::usage2.PNG[]
+image::usage_creat_object.PNG[]
+
+and to modify its attributes, for example "id" and "innerHTML":
+
+image::usage_modify_field.PNG[]
+
+To show in browser, we need add them to the <body>:
+
+image::usage_add_widget.PNG[]
+
+The result in browser is:
+
+image::usage_browser.PNG[]
+
+To subscribe an event, for exemple a click on <button>, and request some informations about this event,
+ for exemple, ClientX, Client Y:
+ 
+image::usage_event.PNG[]
+
+If an user's web click on the button, we have:
+
+image::usage_result.PNG[]
+
+
  
 
 
