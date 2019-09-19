@@ -1,0 +1,16 @@
+== Webidl +
+
+Webidl is an interface definition language that can be used to describe interfaces that are intended to be implemented in web browsers.
+Web IDL is an IDL variant with a number of features that allow the behavior of common script objects in the web platform to be specified more readily.
+https://developer.mozilla.org/en-US/docs/Mozilla/WebIDL_bindings[See Webidl]. +
+
+== Generator + 
+
+We developed a tool that automatically generates Java classes and JavaScript scripts for PonySDK based on https://developer.mozilla.org/en-US/docs/Mozilla/WebIDL_bindings[WebIdl].
+Thanks to this automatic generation, we are able to create all web objects, including HTML and SVG widgets. + 
+
+image::generator1.PNG[]
+
+The generator is a java project that takes webidl files as input and product java and javaScript files according to our needs as output. This works is an exension of project https://github.com/gwt-jelement/jsinterop-gen/blob/master/README.md[jsinterop-gen].
+
+image::generator2.PNG[]

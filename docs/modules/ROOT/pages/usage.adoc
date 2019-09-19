@@ -1,0 +1,11 @@
+= Usage
+
+We explain quickly how to use this version of PonySDK. + 
+
+To create some graphical widgets, likes as <div> and <label>: + 
+
+image::usage1.PNG[]
+image::usage2.PNG[]
+ 
+
+

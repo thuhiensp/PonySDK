@@ -1,1 +1,32 @@
-=== The code in server side is written in java.
+= Server Side +
+
+In this version, we replace and add some Java classes to the server side that allow us to create and manipulate all objects of web. +
+This code is generated automatically from webidl files. These classes are separated by 3 main groups: eventTarget, event, callback. +
+
+== EventTarget + 
+These classes represent the objects that can receive events and may have listeners for them. All widget graphique in user’s web page is managed by a similar object of this groupe on the server-side. 
+We have in these classes the possibility to change the values of their properties (those which are allowed to modify by
+browser) and execute some callbacks when a user activates his presentation on the browser. This type of callback is done by using an on-event handler attribute(like onclick, on keypress, onfocus,etc) 
+with a function as its values. +
+
+image::eventarget.PNG[]
+ 
+== Event + 
+
+This group represents an event which takes place in the DOM. There are many types of events, each of them corressponds to a class of ce group.
+Events are described by a hierarchy whose the parent classe is Event. For example:
+
+image::event.PNG[]
+
+Suppose we want to retrieve some informations of an event hired on a graphical widget by an user on browser. If we transfer all fields of this event to the server, 
+it will cost a lot of bandwidth and memory, therefore, it makes our application less efficient. 
+
+The solution we have adopted is to offer our users the possibility to choose informations he wants to capture at the moment he subscribe to an event on a graphic widget.
+
+== Callback +
+
+All members of this group are Java interfaces that will be implemented by the users at the moment of subscription for an event. All on-event handlers attributes of EventTarget group have the type callback.
+This allows us manage events on the graphical objects as its special atributes. 
+Once user's web trigger the event, the browser will send a message to the Pony Server to tell him execute the tasks entrusted to him.
+
+
