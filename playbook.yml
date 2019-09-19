@@ -1,8 +1,7 @@
 site:
   title: PonySDK nouvelle version
   # the 404 page and sitemap files only get generated when the url property is set
-  #url: http://www.ponysdk.com
-  url: file:///C:/Users/hle/git/PonySDK11/public
+  url: http://www.ponysdk.com
   start_page: ponysdk::index.adoc
 content:
   sources:
@@ -14,5 +13,3 @@ ui:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/master/raw/build/ui-bundle.zip?job=bundle-stable
     snapshot: true
   supplemental_files: ./supplemental_ui
-output:
-  dir: ./public 
