@@ -1,4 +1,7 @@
+*~
 .gradle/
 /.metadata/
 /.recommenders/
-*~
+build/
+public/
+sample/sample.log
