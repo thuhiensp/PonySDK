@@ -1,7 +1,7 @@
 site:
   title: PonySDK nouvelle version
   # the 404 page and sitemap files only get generated when the url property is set
-  url: file:///C:/Users/hle/git/PonySDK11/public
+  url: http://www.ponysdk.com
   start_page: ponysdk::index.adoc
 content:
   sources:
