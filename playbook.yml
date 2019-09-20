@@ -1,0 +1,18 @@
+site:
+  title: PonySDK nouvelle version
+  # the 404 page and sitemap files only get generated when the url property is set
+  url: file:///C:/Users/hle/git/PonySDK11/public
+  start_page: ponysdk::index.adoc
+content:
+  sources:
+  - url: .
+    start_path: docs
+    branches: [hle]
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/master/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files: ./supplemental_ui
+output:
+  dir: ./public
+# DOCSEARCH_ENABLED=true DOCSEARCH_ENGINE=lunr antora playbook.yml //command to run antorat.
