@@ -5,3 +5,4 @@
 build/
 public/
 sample/sample.log
+node_modules/

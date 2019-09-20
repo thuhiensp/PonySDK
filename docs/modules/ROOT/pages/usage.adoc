@@ -1,8 +1,8 @@
 = Usage
 
-We explain quickly how to use this version of PonySDK. + 
+We explain quickly how to use PonySDK v3. The syntax is very similar to HTML. 
 
-Using PonySDK v3 to creat some widgets, likes as <div> and <button>:
+Using PonySDK v3 to creat some widgets, for example a <div> and a <button>:
 
 image::usage_creat_object.PNG[]
 
@@ -26,6 +26,14 @@ image::usage_event.PNG[]
 If an user's web click on the button, we have:
 
 image::usage_result.PNG[]
+
+PonySDK v3 gives you the possibility to create and manipulate with the graphicals objects that do not exist in GWT. For exemple:
+
+image::usage_video.PNG[]
+
+will show a <video> with the given source:
+
+image::usage_video_browser.PNG[]
 
 
  

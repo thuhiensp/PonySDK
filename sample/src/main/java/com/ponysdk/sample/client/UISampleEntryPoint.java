@@ -25,11 +25,9 @@ package com.ponysdk.sample.client;
 
 import com.ponysdk.core.server.application.UIContext;
 import com.ponysdk.core.ui.main.EntryPoint;
-import com.ponysdk.core.ui2.PEventAttributesName;
 import com.ponysdk.core.ui2.PHTMLBodyElement;
-import com.ponysdk.core.ui2.PHTMLButtonElement;
-import com.ponysdk.core.ui2.PHTMLDivElement;
-import com.ponysdk.core.ui2.PMouseEvent;
+import com.ponysdk.core.ui2.PHTMLSourceElement;
+import com.ponysdk.core.ui2.PHTMLVideoElement;
 import com.ponysdk.core.ui2.PWindow2;
 import com.ponysdk.sample.client.event.UserLoggedOutEvent;
 import com.ponysdk.sample.client.event.UserLoggedOutHandler;
@@ -39,20 +37,29 @@ public class UISampleEntryPoint implements EntryPoint, UserLoggedOutHandler {
     @Override
     public void start(final UIContext uiContext) {
 
-        final PHTMLDivElement pDiv = new PHTMLDivElement();
-        final PHTMLButtonElement pButton = new PHTMLButtonElement();
-
-        pDiv.setId("myDiv");
-        pButton.setInnerHTML("Hello world");
-
+        //        final PHTMLDivElement pDiv = new PHTMLDivElement();
+        //        final PHTMLButtonElement pButton = new PHTMLButtonElement();
+        //
+        //        pDiv.setId("myDiv");
+        //        pButton.setInnerHTML("Hello world");
+        //
         final PHTMLBodyElement pBody = PWindow2.getMain().getBody();
-        pBody.add(pDiv);
-        pDiv.add(pButton);
+        //        pBody.add(pDiv);
+        //        pDiv.add(pButton);
+        //
+        //        pButton.setOnclick(event -> {
+        //            pDiv.setClassName("myClassDiv");
+        //            pDiv.setInnerHTML("clientX: " + ((PMouseEvent) event).getClientX() + ", clientY: " + ((PMouseEvent) event).getClientY());
+        //        }, PEventAttributesName.CLIENTX, PEventAttributesName.CLIENTY);
 
-        pButton.setOnclick(event -> {
-            pDiv.setClassName("myClassDiv");
-            pDiv.setInnerHTML("clientX: " + ((PMouseEvent) event).getClientX() + ", clientY: " + ((PMouseEvent) event).getClientY());
-        }, PEventAttributesName.CLIENTX, PEventAttributesName.CLIENTY);
+        final PHTMLVideoElement pVideo = new PHTMLVideoElement();
+        final PHTMLSourceElement pSource = new PHTMLSourceElement();
+        pVideo.setControls(true);
+        pVideo.setWidth(250.0);
+        pVideo.add(pSource);
+        pSource.setSrc("https://interactive-examples.mdn.mozilla.net/media/examples/flower.webm");
+        pSource.setType("video/webm");
+        pBody.add(pVideo);
 
         //        final PHTMLH2Element pH2 = new PHTMLH2Element();
         //        final PHTMLSpanElement pSpan0 = new PHTMLSpanElement();
