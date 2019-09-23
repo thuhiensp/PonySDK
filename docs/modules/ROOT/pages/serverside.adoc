@@ -1,12 +1,12 @@
 = Server Side +
 
 In this version, we replace and add some Java classes to the server side that allow us to create and manipulate all objects of web. +
-This code is generated automatically from webidl files. These classes are separated by 3 main groups: eventTarget, event, callback. +
+This code is automatically generated from Webidl files. These classes are separated by 3 main groups: eventTarget, event, callback. +
 
 == EventTarget + 
 These classes represent the objects that can receive events and may have listeners for them. All widget graphique in user’s web page is managed by a similar object of this groupe on the server-side. 
 We have in these classes the possibility to change the values of their properties (those which are allowed to modify by
-browser) and execute some callbacks when a user activates his presentation on the browser. This type of callback is done by using an on-event handler attribute(like onclick, on keypress, onfocus,etc) 
+browser) and execute some callbacks when a user activates its objects on the browser. This type of callback is done by using an on-event handler attribute(like onclick, on keypress, onfocus,etc) 
 with a function as its values. +
 
 image::eventarget.PNG[]

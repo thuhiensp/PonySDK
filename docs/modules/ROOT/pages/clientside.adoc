@@ -3,7 +3,7 @@
 In this version, we remplace the client code written in Java based to GWT v2.8 by pure JavaScript scripts.
 When the browser receives the server messages in binary form, it contains a main script JavaScript written manually that decodes and executes the server instructions.
 This script includes some other javacript files that help it create the widgets, modify their fields.... These scripts are
-generated automaticaly from the source webidl.
+automatically generated from the source webidl.
 
 
 

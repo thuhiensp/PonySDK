@@ -333,6 +333,7 @@ window.onload = function () {
       arrayOfArgs[0] = map.get(arrayOfArgs[0]);
       console.log ("object in argument is " + arrayOfArgs[0]);
     }
+    console.log("array of argument "  + arrayOfArgs.length);
       var result = arrayOfAllMethods[method_id](object,arrayOfArgs);
       console.log("We can get result?" + result);
       objectJsToServer = {"5": [{"0" : object_id, "W": iDCbacks, "Z": method_id, "t": result}]};

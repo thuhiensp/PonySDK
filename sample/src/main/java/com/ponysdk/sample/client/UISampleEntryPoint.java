@@ -23,11 +23,40 @@
 
 package com.ponysdk.sample.client;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.ponysdk.core.server.application.UIContext;
 import com.ponysdk.core.ui.main.EntryPoint;
+import com.ponysdk.core.ui2.PEventAttributesName;
+import com.ponysdk.core.ui2.PHTMLAnchorElement;
+import com.ponysdk.core.ui2.PHTMLAreaElement;
+import com.ponysdk.core.ui2.PHTMLBRElement;
 import com.ponysdk.core.ui2.PHTMLBodyElement;
+import com.ponysdk.core.ui2.PHTMLButtonElement;
+import com.ponysdk.core.ui2.PHTMLDivElement;
+import com.ponysdk.core.ui2.PHTMLH2Element;
+import com.ponysdk.core.ui2.PHTMLImageElement;
+import com.ponysdk.core.ui2.PHTMLInputElement;
+import com.ponysdk.core.ui2.PHTMLLabelElement;
+import com.ponysdk.core.ui2.PHTMLMapElement;
 import com.ponysdk.core.ui2.PHTMLSourceElement;
+import com.ponysdk.core.ui2.PHTMLSpanElement;
+import com.ponysdk.core.ui2.PHTMLTableCaptionElement;
+import com.ponysdk.core.ui2.PHTMLTableElement;
+import com.ponysdk.core.ui2.PHTMLTableRowElement;
+import com.ponysdk.core.ui2.PHTMLTextAreaElement;
+import com.ponysdk.core.ui2.PHTMLThElement;
+import com.ponysdk.core.ui2.PHTMLTrackElement;
 import com.ponysdk.core.ui2.PHTMLVideoElement;
+import com.ponysdk.core.ui2.PMouseEvent;
+import com.ponysdk.core.ui2.PSVGAnimateElement;
+import com.ponysdk.core.ui2.PSVGCircleElement;
+import com.ponysdk.core.ui2.PSVGPolygonElement;
+import com.ponysdk.core.ui2.PSVGRectElement;
+import com.ponysdk.core.ui2.PSVGSVGElement;
+import com.ponysdk.core.ui2.PVTTCue;
+import com.ponysdk.core.ui2.PWheelEvent;
 import com.ponysdk.core.ui2.PWindow2;
 import com.ponysdk.sample.client.event.UserLoggedOutEvent;
 import com.ponysdk.sample.client.event.UserLoggedOutHandler;
@@ -42,6 +71,8 @@ public class UISampleEntryPoint implements EntryPoint, UserLoggedOutHandler {
         //
         //        pDiv.setId("myDiv");
         //        pButton.setInnerHTML("Hello world");
+        final Logger log = LoggerFactory.getLogger(UISampleEntryPoint.class);
+        uiContext.setTerminalDataReceiver((object, instruction) -> System.err.println(object + " : " + instruction));
         //
         final PHTMLBodyElement pBody = PWindow2.getMain().getBody();
         //        pBody.add(pDiv);
@@ -52,299 +83,300 @@ public class UISampleEntryPoint implements EntryPoint, UserLoggedOutHandler {
         //            pDiv.setInnerHTML("clientX: " + ((PMouseEvent) event).getClientX() + ", clientY: " + ((PMouseEvent) event).getClientY());
         //        }, PEventAttributesName.CLIENTX, PEventAttributesName.CLIENTY);
 
-        final PHTMLVideoElement pVideo = new PHTMLVideoElement();
-        final PHTMLSourceElement pSource = new PHTMLSourceElement();
-        pVideo.setControls(true);
-        pVideo.setWidth(250.0);
-        pVideo.add(pSource);
-        pSource.setSrc("https://interactive-examples.mdn.mozilla.net/media/examples/flower.webm");
-        pSource.setType("video/webm");
-        pBody.add(pVideo);
-
-        //        final PHTMLH2Element pH2 = new PHTMLH2Element();
-        //        final PHTMLSpanElement pSpan0 = new PHTMLSpanElement();
-        //        final PHTMLLabelElement pLabel0 = new PHTMLLabelElement();
-        //        final PHTMLBRElement pBr0 = new PHTMLBRElement();
-        //        final PHTMLBRElement pBr1 = new PHTMLBRElement();
-        //        final PHTMLBRElement pBr2 = new PHTMLBRElement();
-        //        final PHTMLBRElement pBr3 = new PHTMLBRElement();
-        //        final PHTMLBRElement pBr5 = new PHTMLBRElement();
-        //
-        //        final PHTMLInputElement pInput0 = new PHTMLInputElement();
-        //
-        //        final PHTMLLabelElement pLabel1 = new PHTMLLabelElement();
-        //        final PHTMLInputElement pInput1 = new PHTMLInputElement();
-        //
-        //        final PHTMLTextAreaElement pTextArea2 = new PHTMLTextAreaElement();
-        //
-        //        final PHTMLImageElement pImage = new PHTMLImageElement();
-        //
-        //        final PHTMLAnchorElement pAnchor = new PHTMLAnchorElement();
-        //
-        //        final PHTMLBRElement pBr4 = new PHTMLBRElement();
-        //
-        //        final PHTMLInputElement pInput4 = new PHTMLInputElement();
-        //
         //        final PHTMLVideoElement pVideo = new PHTMLVideoElement();
-        //
         //        final PHTMLSourceElement pSource = new PHTMLSourceElement();
-        //
-        //        final PHTMLTableElement pTable = new PHTMLTableElement();
-        //        final PHTMLTableRowElement pRow1 = new PHTMLTableRowElement();
-        //
-        //        final PHTMLThElement pTh1 = new PHTMLThElement();
-        //
-        //        final PHTMLThElement pTh2 = new PHTMLThElement();
-        //
-        //        final PHTMLThElement pTh3 = new PHTMLThElement();
-        //
-        //        final PHTMLTableRowElement pRow2 = new PHTMLTableRowElement();
-        //
-        //        final PHTMLThElement pTh4 = new PHTMLThElement();
-        //
-        //        final PHTMLThElement pTh5 = new PHTMLThElement();
-        //
-        //        final PHTMLThElement pTh6 = new PHTMLThElement();
-        //
-        //        final PHTMLButtonElement pButton1 = new PHTMLButtonElement();
-        //
-        //        final PHTMLInputElement pInput3 = new PHTMLInputElement();
-        //
-        //        final PHTMLDivElement pDiv1 = new PHTMLDivElement();
-        //
-        //        final PHTMLMapElement pMap = new PHTMLMapElement();
-        //        final PHTMLAreaElement pArea1 = new PHTMLAreaElement();
-        //        final PHTMLAreaElement pArea2 = new PHTMLAreaElement();
-        //
-        //        pMap.setName("infographic");
-        //        pArea1.setShape("circle");
-        //        pArea1.setCoords("75,75,75");
-        //        pArea1.setHref("https://www.smart-trade.net/");
-        //
-        //        pArea2.setShape("circle");
-        //        pArea2.setCoords("475,75,75");
-        //        pArea2.setHref("https://www.linkedin.com/company/smart-trade-technologies");
-        //
-        //        pTh2.setInnerHTML("LastName");
-        //
-        //        pTh1.setInnerHTML("FirstName");
-        //
-        //        pTh3.setInnerHTML("Age");
-        //
-        //        pTh4.setInnerHTML("Jill");
-        //
-        //        pTh5.setInnerHTML("Smith");
-        //
-        //        pTh6.setInnerHTML("50");
-        //
-        //        pInput4.setValue("I am an input. Mouse up me. You will se a video.");
-        //        pButton1.setInnerHTML("I am a nice button, wheel on me!");
-        //        pLabel1.setInnerHTML("KO");
-        //        pInput1.setType("radio");
-        //
-        //        pLabel0.setInnerHTML("OK");
-        //        pInput0.setType("radio");
-        //        pH2.setInnerHTML("This is a first demo of stage Pony by Hien Le, tutor Amine Bagdouri.");
-        //        pSpan0.setInnerHTML("What do you think about this version of PonySDK? ");
-        //        pImage.setUseMap("#infographic");
-        //        pImage.setSrc("https://singledealerplatforms.files.wordpress.com/2015/07/new-html5-spotstream-gui.png");
-        //        pImage.setAlt("MDN infographic");
-        //
-        //        pAnchor.setHref("https://heycam.github.io/webidl/");
-        //        pAnchor.setTitle("Titre du lien");
-        //        pAnchor.setInnerHTML(
-        //            "I am a Anchor element HTML. Click me, you see the page web idl, the source we used for generate our project.");
-        //
         //        pVideo.setControls(true);
-        //        pVideo.setWidth(250.00);
-        //
-        //        pTable.add(pRow1);
-        //        pTable.add(pRow2);
-        //
-        //        pRow1.add(pTh1);
-        //        pRow1.add(pTh2);
-        //        pRow1.add(pTh3);
-        //        pRow2.add(pTh4);
-        //        pRow2.add(pTh5);
-        //        pRow2.add(pTh6);
-        //
-        //        final PHTMLTextAreaElement pTextArea = new PHTMLTextAreaElement();
-        //
-        //        //final PHTMLBodyElement pBodyxxx = new PHTMLBodyElement();
-        //
-        //        //        final PHTMLButtonElement pButtonxxx = new PHTMLButtonElement();
-        //        //        pBodyxxx.add(pButtonxxx);
-        //        //        pBodyxxx.setId("newBody");
-        //        // PWindow2.getMain().getHtml().add(pBodyxxx);
-        //        pBody.add(pH2);
-        //        pBody.add(pBr0);
-        //        pBody.add(pSpan0);
-        //        pBody.add(pBr5);
-        //        pBody.add(pLabel0);
-        //        pBody.add(pInput0);
-        //        pBody.add(pBr1);
-        //        pBody.add(pLabel1);
-        //        pBody.add(pInput1);
-        //        pBody.add(pBr2);
-        //        pBody.add(pDiv1);
-        //        pBody.add(pAnchor);
-        //        pBody.add(pBr3);
-        //        pBody.add(pInput4);
-        //        pBody.add(pBr4);
-        //        pBody.add(pButton1);
-        //        pBody.add(pMap);
-        //        pBody.add(pTable);
-        //        pBody.add(pTextArea);
-        //
-        //        pTextArea.setAttribute("style", "overflow-y: scroll; height:400px;");
-        //        pMap.add(pArea1);
-        //        pMap.add(pArea2);
-        //
+        //        pVideo.setWidth(250.0);
         //        pVideo.add(pSource);
         //        pSource.setSrc("https://interactive-examples.mdn.mozilla.net/media/examples/flower.webm");
         //        pSource.setType("video/webm");
-        //
-        //        pTextArea.setValue("the second baby of pmap is " + pMap.getChildren(1) + "\n" + "hihihaah");
-        //
-        //        //        pInput4.setOnchange(event -> {
-        //        //            pBody.add(pTable);
-        //        //            // pInput4.setValue("type of evvent:  " + event.getType());
-        //        //        });
-        //
-        //        pButton1.setOnwheel(event -> {
-        //            pBody.add(pBr0);
-        //            pBody.add(pTextArea2);
-        //            pBody.add(pImage);
-        //            pTextArea2.setRows(2.5);
-        //            //pTextArea2.setInnerHTML("\u00e9");
-        //            pTextArea2.setInnerHTML("\u00e9"
-        //                    + "You click on area EURUSD of the image, you see a cercle. Do same thing on area USDJPY. Back in the old days a computer had a single CPU, and was only capable of executing a single program at a time. Later came multitasking which meant that computers could execute multiple programs (AKA tasks or processes) at the same time. It wasn't really \"at the same time\" though. The single CPU was shared between the programs. The operating system would switch between the programs running, executing each of them for a little while before switching.\n"
-        //                    + "\n"
-        //                    + "Along with multitasking came new challenges for software developers. Programs can no longer assume to have all the CPU time available, nor all memory or any other computer resources. A \"good citizen\" program should release all resources it is no longer using, so other programs can use them."
-        //                    + "Dans les locaux de l'Union nationale des propriétaires immobiliers (UNPI), où les appels des adhérents se multiplient ces dernières semaines, on assure que l'ampleur du phénomène est particulièrement marquée cette année. « Nous recevons beaucoup plus d'appels et de courriers que les autres années, note Christophe Demerson, le président de l'UNPI. Certains propriétaires ne comprennent pas l'augmentation prévue car ils n'ont fait aucuns travaux depuis des années ! »"
-        //                    + ((PWheelEvent) event).getPath()[1].getClass().getCanonicalName());
-        //
-        //        }, PEventAttributesName.PATH);
-        //
-        //        pInput4.setOnmouseup(event -> {
-        //            pBody.add(pVideo);
-        //            pInput4.setValue("event ClientX:" + ((PMouseEvent) event).getClientX() + ((PMouseEvent) event).getType());
-        //        }, PEventAttributesName.CLIENTX, PEventAttributesName.TYPE, PEventAttributesName.PATH);
-        //
-        //        pInput0.setOnclick(event -> {
-        //            pLabel0.setInnerHTML("Thank you for your apreciation");
-        //            pLabel1.setInnerHTML("");
+        //        pBody.add(pVideo);
+
+        final PHTMLH2Element pH2 = new PHTMLH2Element();
+        final PHTMLSpanElement pSpan0 = new PHTMLSpanElement();
+        final PHTMLLabelElement pLabel0 = new PHTMLLabelElement();
+        final PHTMLBRElement pBr0 = new PHTMLBRElement();
+        final PHTMLBRElement pBr1 = new PHTMLBRElement();
+        final PHTMLBRElement pBr2 = new PHTMLBRElement();
+        final PHTMLBRElement pBr3 = new PHTMLBRElement();
+        final PHTMLBRElement pBr5 = new PHTMLBRElement();
+
+        final PHTMLInputElement pInput0 = new PHTMLInputElement();
+
+        final PHTMLLabelElement pLabel1 = new PHTMLLabelElement();
+        final PHTMLInputElement pInput1 = new PHTMLInputElement();
+
+        final PHTMLTextAreaElement pTextArea2 = new PHTMLTextAreaElement();
+
+        final PHTMLImageElement pImage = new PHTMLImageElement();
+
+        final PHTMLAnchorElement pAnchor = new PHTMLAnchorElement();
+
+        final PHTMLBRElement pBr4 = new PHTMLBRElement();
+
+        final PHTMLInputElement pInput4 = new PHTMLInputElement();
+
+        final PHTMLVideoElement pVideo = new PHTMLVideoElement();
+
+        final PHTMLSourceElement pSource = new PHTMLSourceElement();
+
+        final PHTMLTableElement pTable = new PHTMLTableElement();
+        final PHTMLTableRowElement pRow1 = new PHTMLTableRowElement();
+
+        final PHTMLThElement pTh1 = new PHTMLThElement();
+
+        final PHTMLThElement pTh2 = new PHTMLThElement();
+
+        final PHTMLThElement pTh3 = new PHTMLThElement();
+
+        final PHTMLTableRowElement pRow2 = new PHTMLTableRowElement();
+
+        final PHTMLThElement pTh4 = new PHTMLThElement();
+
+        final PHTMLThElement pTh5 = new PHTMLThElement();
+
+        final PHTMLThElement pTh6 = new PHTMLThElement();
+
+        final PHTMLButtonElement pButton1 = new PHTMLButtonElement();
+
+        final PHTMLInputElement pInput3 = new PHTMLInputElement();
+
+        final PHTMLDivElement pDiv1 = new PHTMLDivElement();
+
+        final PHTMLMapElement pMap = new PHTMLMapElement();
+        final PHTMLAreaElement pArea1 = new PHTMLAreaElement();
+        final PHTMLAreaElement pArea2 = new PHTMLAreaElement();
+
+        pMap.setName("infographic");
+        pArea1.setShape("circle");
+        pArea1.setCoords("75,75,75");
+        pArea1.setHref("https://www.smart-trade.net/");
+
+        pArea2.setShape("circle");
+        pArea2.setCoords("475,75,75");
+        pArea2.setHref("https://www.linkedin.com/company/smart-trade-technologies");
+
+        pTh2.setInnerHTML("LastName");
+
+        pTh1.setInnerHTML("FirstName");
+
+        pTh3.setInnerHTML("Age");
+
+        pTh4.setInnerHTML("Jill");
+
+        pTh5.setInnerHTML("Smith");
+
+        pTh6.setInnerHTML("50");
+
+        pInput4.setValue("I am an input. Mouse up me. You will se a video.");
+        pButton1.setInnerHTML("I am a nice button, wheel on me!");
+        pLabel1.setInnerHTML("KO");
+        pInput1.setType("radio");
+
+        pLabel0.setInnerHTML("OK");
+        pInput0.setType("radio");
+        pH2.setInnerHTML("This is a first demo of stage Pony by Hien Le, tutor Amine Bagdouri.");
+        pSpan0.setInnerHTML("What do you think about this version of PonySDK? ");
+        pImage.setUseMap("#infographic");
+        pImage.setSrc("https://singledealerplatforms.files.wordpress.com/2015/07/new-html5-spotstream-gui.png");
+        pImage.setAlt("MDN infographic");
+
+        pAnchor.setHref("https://heycam.github.io/webidl/");
+        pAnchor.setTitle("Titre du lien");
+        pAnchor.setInnerHTML(
+            "I am a Anchor element HTML. Click me, you see the page web idl, the source we used for generate our project.");
+
+        pVideo.setControls(true);
+        pVideo.setWidth(250.00);
+
+        pTable.add(pRow1);
+        pTable.add(pRow2);
+
+        pRow1.add(pTh1);
+        pRow1.add(pTh2);
+        pRow1.add(pTh3);
+        pRow2.add(pTh4);
+        pRow2.add(pTh5);
+        pRow2.add(pTh6);
+
+        final PHTMLTextAreaElement pTextArea = new PHTMLTextAreaElement();
+
+        //final PHTMLBodyElement pBodyxxx = new PHTMLBodyElement();
+
+        //        final PHTMLButtonElement pButtonxxx = new PHTMLButtonElement();
+        //        pBodyxxx.add(pButtonxxx);
+        //        pBodyxxx.setId("newBody");
+        // PWindow2.getMain().getHtml().add(pBodyxxx);
+        pBody.add(pH2);
+        pBody.add(pBr0);
+        pBody.add(pSpan0);
+        pBody.add(pBr5);
+        pBody.add(pLabel0);
+        pBody.add(pInput0);
+        pBody.add(pBr1);
+        pBody.add(pLabel1);
+        pBody.add(pInput1);
+        pBody.add(pBr2);
+        pBody.add(pDiv1);
+        pBody.add(pAnchor);
+        pBody.add(pBr3);
+        pBody.add(pInput4);
+        pBody.add(pBr4);
+        pBody.add(pButton1);
+        pBody.add(pMap);
+        pBody.add(pTable);
+        pBody.add(pTextArea);
+
+        pTextArea.setAttribute("style", "overflow-y: scroll; height:400px;");
+        pMap.add(pArea1);
+        pMap.add(pArea2);
+
+        pVideo.add(pSource);
+        pSource.setSrc("https://interactive-examples.mdn.mozilla.net/media/examples/flower.webm");
+        pSource.setType("video/webm");
+
+        pTextArea.setValue("the second baby of pmap is " + pMap.getChildren(1) + "\n" + "hihihaah");
+
+        //        pInput4.setOnchange(event -> {
+        //            pBody.add(pTable);
+        //            // pInput4.setValue("type of evvent:  " + event.getType());
         //        });
-        //
-        //        pInput1.setOnclick(event -> {
-        //            pLabel1.setInnerHTML("Thank you, we will improve it.");
-        //            pLabel0.setInnerHTML("");
-        //        });
-        //
-        //        pMap.setName("infographic");
-        //
-        //        pInput3.setValue("Report to do");
-        //        pDiv1.setTitle("PonySDK");
-        //        final PHTMLBodyElement body = new PHTMLBodyElement();
-        //        PWindow2.getMain().getHtml().add(body);
-        //
-        //        final PHTMLInputElement pInput5 = new PHTMLInputElement();
-        //        pInput5.setValue("Report to finish before 15/08");
-        //
-        //        final PVTTCue pCue = new PVTTCue(2.0, 3.0, "\u00e9" + " Cool text to be displayed");
-        //        final PHTMLVideoElement pVideo1 = new PHTMLVideoElement();
-        //        final PHTMLSourceElement pSource1 = new PHTMLSourceElement();
-        //        pSource1.setSrc("http://media.w3.org/2010/05/sintel/trailer.mp4");
-        //        pSource1.setType("video/mp4");
-        //        final PHTMLTrackElement pTrack1 = new PHTMLTrackElement();
-        //        pTrack1.setSrc("sintel.vtt");
-        //        pTrack1.setKind("captions");
-        //        pTrack1.setLabel("English");
-        //        pTrack1.setSrclang("en");
-        //        pTrack1.setDefault(true);
-        //        pBody.add(pVideo1);
-        //        pVideo1.add(pSource1);
-        //        pVideo1.setControls(true);
-        //        pVideo1.setWidth(500.00);
-        //        pVideo1.add(pTrack1);
-        //
-        //        pCue.attach(PWindow2.getMain());
-        //
-        //        //final PWebSocket ws = new PWebSocket("ws://echo.websocket.org");
-        //
-        //        final PWindow2 myWindow0 = new PWindow2();
-        //
-        //        final PHTMLButtonElement pButton = new PHTMLButtonElement();
-        //        pBody.add(pButton);
-        //        pButton.setInnerHTML("click me to open un nouveau window");
-        //        myWindow0.getBody().add(pInput3);
-        //        myWindow0.open();
-        //        //ws.attach(myWindow0);
-        //
-        //        final PWindow2 myWindow1 = new PWindow2(myWindow0);
-        //        myWindow1.getBody().add(pInput5);
-        //        myWindow1.open();
-        //        pButton.setOnclick(event -> {
-        //            myWindow0.open();
-        //            pInput3.setValue("Oke, it is not problem");
-        //        });
-        //
-        //        //        pTable.setOnclick(event -> {
-        //        //            pCaption.setInnerHTML("Table of good employed");
-        //        //            pTable.setCaption(pCaption);
-        //        //
-        //        //        });
-        //        //        pRow1.click();
-        //
-        //        pBody.contains(result -> {
-        //            pInput4.setValue("can i get result" + result.toString());
-        //        }, pButton);
-        //
-        //        //        pAnimate.getStartTime(result -> pInput4.setValue("can i get result: " + result.toString()));
-        //        //        pAnimate.getCurrentTime(result -> pInput3.setValue("ok, it is not problem" + result));
+
+        pButton1.setOnwheel(event -> {
+            pBody.add(pBr0);
+            pBody.add(pTextArea2);
+            pBody.add(pImage);
+            pTextArea2.setRows(2.5);
+            //pTextArea2.setInnerHTML("\u00e9");
+            pTextArea2.setInnerHTML("\u00e9"
+                    + "You click on area EURUSD of the image, you see a cercle. Do same thing on area USDJPY. Back in the old days a computer had a single CPU, and was only capable of executing a single program at a time. Later came multitasking which meant that computers could execute multiple programs (AKA tasks or processes) at the same time. It wasn't really \"at the same time\" though. The single CPU was shared between the programs. The operating system would switch between the programs running, executing each of them for a little while before switching.\n"
+                    + "\n"
+                    + "Along with multitasking came new challenges for software developers. Programs can no longer assume to have all the CPU time available, nor all memory or any other computer resources. A \"good citizen\" program should release all resources it is no longer using, so other programs can use them."
+                    + "Dans les locaux de l'Union nationale des propriétaires immobiliers (UNPI), où les appels des adhérents se multiplient ces dernières semaines, on assure que l'ampleur du phénomène est particulièrement marquée cette année. « Nous recevons beaucoup plus d'appels et de courriers que les autres années, note Christophe Demerson, le président de l'UNPI. Certains propriétaires ne comprennent pas l'augmentation prévue car ils n'ont fait aucuns travaux depuis des années ! »"
+                    + ((PWheelEvent) event).getPath()[1].getClass().getCanonicalName());
+
+        }, PEventAttributesName.PATH);
+
+        pInput4.setOnmouseup(event -> {
+            pBody.add(pVideo);
+            pInput4.setValue("event ClientX:" + ((PMouseEvent) event).getClientX() + ((PMouseEvent) event).getType());
+        }, PEventAttributesName.CLIENTX, PEventAttributesName.TYPE, PEventAttributesName.PATH);
+
+        pInput0.setOnclick(event -> {
+            pLabel0.setInnerHTML("Thank you for your apreciation");
+            pLabel1.setInnerHTML("");
+        });
+
+        pInput1.setOnclick(event -> {
+            pLabel1.setInnerHTML("Thank you, we will improve it.");
+            pLabel0.setInnerHTML("");
+        });
+
+        pMap.setName("infographic");
+
+        pInput3.setValue("Report to do");
+        pDiv1.setTitle("PonySDK");
+        final PHTMLBodyElement body = new PHTMLBodyElement();
+        PWindow2.getMain().getHtml().add(body);
+
+        final PHTMLInputElement pInput5 = new PHTMLInputElement();
+        pInput5.setValue("Report to finish before 15/08");
+
+        final PVTTCue pCue = new PVTTCue(2.0, 3.0, "\u00e9" + " Cool text to be displayed");
+        final PHTMLVideoElement pVideo1 = new PHTMLVideoElement();
+        final PHTMLSourceElement pSource1 = new PHTMLSourceElement();
+        pSource1.setSrc("http://media.w3.org/2010/05/sintel/trailer.mp4");
+        pSource1.setType("video/mp4");
+        final PHTMLTrackElement pTrack1 = new PHTMLTrackElement();
+        pTrack1.setSrc("sintel.vtt");
+        pTrack1.setKind("captions");
+        pTrack1.setLabel("English");
+        pTrack1.setSrclang("en");
+        pTrack1.setDefault(true);
+        pBody.add(pVideo1);
+        pVideo1.add(pSource1);
+        pVideo1.setControls(true);
+        pVideo1.setWidth(500.00);
+        pVideo1.add(pTrack1);
+
+        pCue.attach(PWindow2.getMain());
+
+        //final PWebSocket ws = new PWebSocket("ws://echo.websocket.org");
+
+        final PWindow2 myWindow0 = new PWindow2();
+
+        final PHTMLButtonElement pButton = new PHTMLButtonElement();
+        pBody.add(pButton);
+        pButton.setInnerHTML("click me to open un nouveau window");
+        myWindow0.getBody().add(pInput3);
+        myWindow0.open();
+        //ws.attach(myWindow0);
+
+        final PWindow2 myWindow1 = new PWindow2(myWindow0);
+        myWindow1.getBody().add(pInput5);
+        myWindow1.open();
+        pButton.setOnclick(event -> {
+            myWindow0.open();
+            pInput3.setValue("Oke, it is not problem");
+        });
+
+        //        pRow1.click();
+
+        pBody.contains(result -> {
+            pInput4.setValue("can i get result" + result.toString());
+        }, pButton);
+
+        final PHTMLTableCaptionElement pCaption = new PHTMLTableCaptionElement();
+        pCaption.setInnerHTML("Table of employed");
+        pCaption.attach(PWindow2.getMain());
+        pTable.setCaption(pCaption);
+
+        pTable.setOnclick(event -> {
+            pCaption.setInnerHTML("Table of good employed");
+            pTable.setCaption(pCaption);
+
+        });
+
+        final PSVGSVGElement pSvg = new PSVGSVGElement();
+        pBody.add(pSvg);
+        final PSVGRectElement pSvgRect = new PSVGRectElement();
+        final PSVGCircleElement pSvgCircle = new PSVGCircleElement();
+        pSvg.add(pSvgRect);
+        pSvg.add(pSvgCircle);
+        pSvgRect.setAttributeNS("", "x", "0");
+        pSvgRect.setAttributeNS("", "y", "0");
+        pSvgRect.setAttributeNS("", "width", "300");
+        pSvgRect.setAttributeNS("", "height", "100");
+        pSvgRect.setAttributeNS("", "stroke", "black");
+        pSvgRect.setAttributeNS("", "stroke-width", "1");
+        pSvgCircle.setAttributeNS("", "cx", "0");
+        pSvgCircle.setAttributeNS("", "cy", "50");
+        pSvgCircle.setAttributeNS("", "r", "15");
+        pSvgCircle.setAttributeNS("", "fill", "green");
+        pSvgCircle.setAttributeNS("", "stroke", "none");
+        final PSVGAnimateElement pAnimate = new PSVGAnimateElement();
+        pSvgCircle.add(pAnimate);
+        pAnimate.setAttributeNS("", "attributeName", "cx");
+        pAnimate.setAttributeNS("", "from", "5");
+        pAnimate.setAttributeNS("", "to", "100");
+        // pAnimate.setAttributeNS("", "begin", "0s");
+        pAnimate.setAttributeNS("", "dur", "10s");
+        pAnimate.setAttributeNS("", "fill", "remove");
+        pAnimate.setAttributeNS("", "repeatCount", "indefinite");
+
+        pAnimate.getStartTime(result -> pInput4.setValue("can i get result: " + result.toString()));
+        pAnimate.getCurrentTime(result -> pInput3.setValue("ok, it is not problem" + result));
+        final PSVGPolygonElement polygon = new PSVGPolygonElement();
+        pSvg.add(polygon);
+        pSvg.setAttributeNS("", "width", "300");
+        pSvg.setAttributeNS("", "height", "200");
+        polygon.setAttributeNS("", "points", "100,10 40,198 190,78 10,78 160,198");
+        polygon.setAttributeNS("", "style", "fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;");
+
         //        pInput4.remove1();
         //        pInput4.remove1();
         //        pInput4.remove1();
         //        pTable.remove1();
-        //
-        //        //        final PHTMLTableCaptionElement pCaption = new PHTMLTableCaptionElement();
-        //        //        pCaption.setInnerHTML("Table of employed");
-        //        //        pCaption.attach(PWindow2.getMain());
-        //        //        pTable.setCaption(pCaption);
-        //
-        //        final PSVGSVGElement pSvg = new PSVGSVGElement();
-        //        pBody.add(pSvg);
-        //        final PSVGRectElement pSvgRect = new PSVGRectElement();
-        //        final PSVGCircleElement pSvgCircle = new PSVGCircleElement();
-        //        pSvg.add(pSvgRect);
-        //        pSvg.add(pSvgCircle);
-        //        pSvgRect.setAttributeNS("", "x", "0");
-        //        pSvgRect.setAttributeNS("", "y", "0");
-        //        pSvgRect.setAttributeNS("", "width", "300");
-        //        pSvgRect.setAttributeNS("", "height", "100");
-        //        pSvgRect.setAttributeNS("", "stroke", "black");
-        //        pSvgRect.setAttributeNS("", "stroke-width", "1");
-        //        pSvgCircle.setAttributeNS("", "cx", "0");
-        //        pSvgCircle.setAttributeNS("", "cy", "50");
-        //        pSvgCircle.setAttributeNS("", "r", "15");
-        //        pSvgCircle.setAttributeNS("", "fill", "green");
-        //        pSvgCircle.setAttributeNS("", "stroke", "none");
-        //        final PSVGAnimateElement pAnimate = new PSVGAnimateElement();
-        //        pSvgCircle.add(pAnimate);
-        //        pAnimate.setAttributeNS("", "attributeName", "cx");
-        //        pAnimate.setAttributeNS("", "from", "5");
-        //        pAnimate.setAttributeNS("", "to", "100");
-        //        // pAnimate.setAttributeNS("", "begin", "0s");
-        //        pAnimate.setAttributeNS("", "dur", "10s");
-        //        pAnimate.setAttributeNS("", "fill", "remove");
-        //        pAnimate.setAttributeNS("", "repeatCount", "indefinite");
-        //
-        //        final PSVGPolygonElement polygon = new PSVGPolygonElement();
-        //        pSvg.add(polygon);
-        //        pSvg.setAttributeNS("", "width", "300");
-        //        pSvg.setAttributeNS("", "height", "200");
-        //        polygon.setAttributeNS("", "points", "100,10 40,198 190,78 10,78 160,198");
-        //        polygon.setAttributeNS("", "style", "fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;");
     }
 
     @Override
