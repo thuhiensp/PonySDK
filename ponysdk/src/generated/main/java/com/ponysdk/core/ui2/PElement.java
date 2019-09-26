@@ -46,6 +46,10 @@ public abstract class PElement extends PNode {
         return parent;
     }
 
+    public void setParent(final PElement parent) {
+        this.parent = parent;
+    }
+
     public void add(final PElement child) {
         if (children == null) children = new ArrayList<>();
         children.add(child);
@@ -60,17 +64,38 @@ public abstract class PElement extends PNode {
         child.parent = this;
     }
 
-    public void remove1() {
+    public Boolean remove1() {
         if (parent != null && parent.getChildren().remove(this)) {
             parent = null;
-            children = null;
             final int id = getID();
             final ModelWriter writer = UIContext.get().getWriter();
             writer.beginPObject2();
             writer.write(ServerToClientModel.POBJECT2_TYPE_REMOVE_CHILD, id);
             writer.endObject();
+            return true;
 
         }
+        return false;
+    }
+
+    public Boolean remove(final PElement child) {
+        if (children != null && child != null && children.remove(child)) {
+            orphan(child);
+            final int id = child.getID();
+            final ModelWriter writer = UIContext.get().getWriter();
+            writer.beginPObject2();
+            writer.write(ServerToClientModel.POBJECT2_TYPE_REMOVE_CHILD, id);
+            writer.endObject();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    final void orphan(final PElement child) {
+        if (child == null) {
+        } else if (child.getParent() == this) child.setParent(null);
+        else throw new IllegalStateException("Can't adopt an widget attached to another parent");
     }
 
     protected void add0(final PObject2 pObject2) {

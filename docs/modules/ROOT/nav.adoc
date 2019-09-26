@@ -1,4 +1,4 @@
-* xref:index.adoc[Welcome]
+* xref:welcome.adoc[Welcome]
 * xref:global.adoc[Architecture]
 * Main difference to previous versions
 ** xref:serverside.adoc[Server Side]

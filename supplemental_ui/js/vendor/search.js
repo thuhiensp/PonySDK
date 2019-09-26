@@ -90,7 +90,33 @@ window.antoraLunr = (function (lunr) {
     return hits
   }
 
-  function createSearchResult(result, store, searchResultDataset) {
+  function getVersion(item, store) {
+	var url = item.ref
+    var hash
+    if (url.includes('#')) {
+		hash = url.substring(url.indexOf('#') + 1)
+		url = url.replace('#' + hash, '')
+	}
+    var doc = store[url]
+	return doc.version
+  }
+  
+  function getComponent(item,store){
+	var url = item.ref
+	var hash
+    if (url.includes('#')) {
+		hash = url.substring(url.indexOf('#') + 1)
+		url = url.replace('#' + hash, '')
+	}
+	var doc = store[url]
+	return doc.component
+  }
+  
+  function createSearchResult(key,result, store, searchResultDataset) {
+	var searchHead = document.createElement("div")
+	searchHead.classList.add("search-result-head")
+	searchResultDataset.appendChild(searchHead)
+	searchHead.innerHTML = key
     result.forEach(function (item) {
       var url = item.ref
       var hash
@@ -104,11 +130,12 @@ window.antoraLunr = (function (lunr) {
       searchResultDataset.appendChild(createSearchResultItem(doc, item, hits))
     })
   }
+  
 
   function createSearchResultItem (doc, item, hits) {
     var documentTitle = document.createElement('div')
     documentTitle.classList.add('search-result-document-title')
-    documentTitle.innerText = doc.title
+    documentTitle.innerText =  doc.title
     var documentHit = document.createElement('div')
     documentHit.classList.add('search-result-document-hit')
     var documentHitLink = document.createElement('a')
@@ -138,7 +165,10 @@ window.antoraLunr = (function (lunr) {
 
   function search (index, text) {
     // execute an exact match search
-    var result = index.search(text)
+    var result = index.search(text).sort(function(item1,item2){
+		return 
+	})
+	
     if (result.length > 0) {
       return result
     }
@@ -165,7 +195,27 @@ window.antoraLunr = (function (lunr) {
     searchResultDataset.classList.add('search-result-dataset')
     searchResult.appendChild(searchResultDataset)
     if (result.length > 0) {
-      createSearchResult(result, store, searchResultDataset)
+	   //result.sort(function(item1, item2) {
+		//   item1Version = getVersion(item1, store)
+		//   item2Version = getVersion(item2, store)
+		//	return item1Version-item2Version;
+		//}
+	   //)
+	   mapResultByVersion = new Map();
+	   result.forEach(function(item){
+		   var versionItem = getComponent(item,store) + " " + getVersion(item,store);
+		   var valueMap = mapResultByVersion.get(versionItem)
+		   if (valueMap == null){
+			   valueMap = []
+			   mapResultByVersion.set(versionItem,valueMap)
+		   }
+		   valueMap.push(item)
+	   })
+	   
+	  for (const [key,value] of mapResultByVersion.entries()){
+		  createSearchResult(key,value,store,searchResultDataset)
+	  }
+      //createSearchResult(result, store, searchResultDataset)
     } else {
       searchResultDataset.appendChild(createNoResult(text))
     }

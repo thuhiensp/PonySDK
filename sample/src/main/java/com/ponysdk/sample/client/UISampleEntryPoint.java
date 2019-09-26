@@ -237,10 +237,10 @@ public class UISampleEntryPoint implements EntryPoint, UserLoggedOutHandler {
 
         pTextArea.setValue("the second baby of pmap is " + pMap.getChildren(1) + "\n" + "hihihaah");
 
-        //        pInput4.setOnchange(event -> {
-        //            pBody.add(pTable);
-        //            // pInput4.setValue("type of evvent:  " + event.getType());
-        //        });
+        pInput4.setOnchange(event -> {
+            pBody.add(pTable);
+            pInput4.setValue("type of evvent:  " + event.getType());
+        }, PEventAttributesName.TYPE);
 
         pButton1.setOnwheel(event -> {
             pBody.add(pBr0);
@@ -373,7 +373,9 @@ public class UISampleEntryPoint implements EntryPoint, UserLoggedOutHandler {
         polygon.setAttributeNS("", "points", "100,10 40,198 190,78 10,78 160,198");
         polygon.setAttributeNS("", "style", "fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;");
 
-        //        pInput4.remove1();
+        //        pBody.remove(pInput4);
+        //        pInput4.setValue("je suis d\u00e9tache depuis mon parent.");
+        //        pBody.add(pInput4);
         //        pInput4.remove1();
         //        pInput4.remove1();
         //        pTable.remove1();

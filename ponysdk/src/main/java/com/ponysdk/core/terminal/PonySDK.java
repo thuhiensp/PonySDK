@@ -96,7 +96,7 @@ public class PonySDK implements UncaughtExceptionHandler {
         final ReconnectionChecker reconnectionChecker = new ReconnectionChecker();
         socketClient = new WebSocketClient(builder, uiBuilder, reconnectionChecker);
 
-        reconnectionChecker.checkConnection();
+        reconnectionChecker.checkConnection();//send the request Get to Server.
     }
 
     private void startChildContext() {
