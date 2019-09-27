@@ -379,8 +379,46 @@ public class UISampleEntryPoint implements EntryPoint, UserLoggedOutHandler {
         //        pInput4.remove1();
         //        pInput4.remove1();
         //        pTable.remove1();
+
+        final PHTMLInputElement pInput6 = new PHTMLInputElement();
+        pInput6.setType("number");
+        pInput6.setMin("100");
+        pInput6.setMax("300");
+        pInput6.setRequired(true);
+
+        pBody.add(pInput6);
+
+        final PHTMLButtonElement pButton6 = new PHTMLButtonElement();
+        pButton6.setInnerHTML("Ok");
+        pBody.add(pButton6);
+        final PHTMLDivElement pDiv = new PHTMLDivElement();
+        pBody.add(pDiv);
+        pDiv.setInnerHTML("Slider");
+
+        pButton6.setOnclick(event -> {
+            pInput6.checkValidity(result -> pDiv.setInnerHTML(
+                "the value of input " + " is between ? " + pInput6.getMin() + "and " + pInput6.getMax() + "? " + result));
+            pInput6.select();
+
+        });
+
+        // TO TESTER. 
+        //        pDiv.setAttribute("width", "140px");
+        //        pDiv.setAttribute("height", "50px");
+        //        pDiv.setAttribute("display", "flex");
+        //        pDiv.setAttribute("align-items", "center");
+        //        pDiv.setAttribute("justify-content", "center");
+        //        pDiv.setAttribute("background", "#ff3c41");
+
+        //        pDiv.setOnpointerdown(event -> pDiv.setOnpointermove(event2 -> {
+        //            final String clientX = ((PMouseEvent) event2).getClientX().toString();
+        //            //final double clX = 50.0 + Double.parseDouble(clientX);
+        //            pDiv.setAttribute("style", "transforme: translate(" + clientX + "px)");
+        //        }, PEventAttributesName.CLIENTX));
+
     }
 
+    //(" + ((PMouseEvent) event2).getClientX() + "px"))
     @Override
     public void onUserLoggedOut(final UserLoggedOutEvent event) {
     }
